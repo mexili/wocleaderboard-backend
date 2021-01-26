@@ -7,8 +7,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const port = process.env.APP_PORT || 8080;
-const host = process.env.APP_HOST || '127.0.0.1';
+const port = process.env.PORT || 8080;
+const host = '127.0.0.1';
 
 const router = require('./routes');
 app.use('/', router);
