@@ -15,7 +15,7 @@ router.use((req, res, next) => {
 
 
 router.post('/updateLeaderBoard', (request, response) => {
-  console.log("updating leaderboard logs!");
+  console.log("updating leaderboard logs!", request);
   const ref = admin.database().ref("/" + request.body.user);
   ref.once("value").then((snapshot) => {
     if (snapshot.val() == null) {
