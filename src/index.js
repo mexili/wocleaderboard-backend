@@ -13,4 +13,4 @@ const router = require('./routes');
 app.use('/', router);
 app.listen(port);
 
-console.log(`Server listening at ${host}`);
+console.log(`Server listening at ${port}`);
