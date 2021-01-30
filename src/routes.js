@@ -15,7 +15,7 @@ router.use((req, res, next) => {
 
 
 router.post('/updateLeaderBoard', (request, response) => {
-  console.log("updating leaderboard logs!", request);
+  console.log("updating leaderboard logs!", request.body.user);
   if(!request.body.user || !request.body.score ) {
     response.send("Haha nice try. Better spend time buying GME");
   }
