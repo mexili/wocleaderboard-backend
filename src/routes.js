@@ -15,18 +15,21 @@ router.use((req, res, next) => {
 
 
 router.post('/updateLeaderBoard', (request, response) => {
-  console.log("updating leaderboard logs!", request.body.user);
-  if(!request.body.user || !request.body.score ) {
+  console.log("updating leaderboard logs!", request.body);
+  let data = request.body;
+  let user = data.split(":")[0].split("=")[1];
+  let score = data.split(":")[1].split("=")[1];
+  if(!user || !score ) {
     response.send("Haha nice try. Better spend time buying GME");
   }
-  const ref = admin.database().ref("/" + request.body.user);
+  const ref = admin.database().ref("/" + user);
   ref.once("value").then((snapshot) => {
     if (snapshot.val() == null) {
       ref.set({
-        score: -1*(parseInt(request.body.score)),
+        score: -1*(parseInt(score)),
       });
     } else {
-    	const newScore = parseInt(snapshot.val().score) + -1*parseInt(request.body.score);
+    	const newScore = parseInt(snapshot.val().score) + -1*parseInt(score);
       ref.set({
 	        score: newScore,
       });
