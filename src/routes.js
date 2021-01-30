@@ -16,7 +16,7 @@ router.use((req, res, next) => {
 
 router.post('/updateLeaderBoard', (request, response) => {
   console.log("updating leaderboard logs!", request.body);
-  let data = request.body;
+  let data = request.body.score;
   let user = data.split(":")[0].split("=")[1];
   let score = data.split(":")[1].split("=")[1];
   if(!user || !score ) {
